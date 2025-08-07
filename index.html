@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <svg width="200" height="80" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+                <style>
+                    .cursive {
+                        font-family: 'Brush Script MT', cursive;
+                        font-size: 48px;
+                        fill: #4B0082;
+                    }
+                </style>
+                <text x="0" y="60" class="cursive">Sanjana Maharana</text>
+            </svg>
+        </div>
+
+        <div class="items" id="nav-items">
+            <div class="item">Home</div>
+            <div class="item">Menu</div>
+            <div class="item">About Us</div>
+            <div class="item">Contact</div>
+        </div>
+                <i class='bx bx-menu' id="menu-icon"></i>
+    </div>
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navItems = document.getElementById('nav-items');
+
+        menuIcon.addEventListener('click', () => {
+            navItems.classList.toggle('show');
+        });
+        document.querySelectorAll('.item').forEach(item => {
+            item.addEventListener('mouseenter', (e) => {
+                const bounds = item.getBoundingClientRect();
+                const mouseX = e.clientX;
+                const middle = bounds.left + bounds.width / 2;
+
+                if (mouseX < middle) {
+                    item.classList.add('hover-left');
+                } else {
+                    item.classList.add('hover-right');
+                }
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('hover-left', 'hover-right');
+            });
+        });
+    </script>
+
+</body>
+
+</html>>
